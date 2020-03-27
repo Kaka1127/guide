@@ -8,7 +8,7 @@ pre : "<b>3. </b>"
 
 データ前処理から性能テストまで、それぞれの開発環境が立ち上げ可能  
 
-![system]({{ .Site.BaseURL }}/images/system.png)
+![system](https://kaka1127.github.io/guide/images/system.png)
 
 ---
 
@@ -23,7 +23,7 @@ pre : "<b>3. </b>"
 | 開発者 | ブラウザ経由で管理サーバに環境立ち上げ指示を行います。 |
 | 共有ストレージ | 学習に使用するデータを置くストレージ。学習結果もここに出力させる必要があります。 |
 
-![system]({{ .Site.BaseURL }}/images/workflow.png)
+![system](https://kaka1127.github.io/guide/images/workflow.png)
 
 ---
 
