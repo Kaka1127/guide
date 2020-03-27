@@ -23,7 +23,7 @@ pre : "<b>3. </b>"
 | 開発者 | ブラウザ経由で管理サーバに環境立ち上げ指示を行います。 |
 | 共有ストレージ | 学習に使用するデータを置くストレージ。学習結果もここに出力させる必要があります。 |
 
-![system](/images/workflow.png)
+![system]({{ .Site.BaseURL }}/images/workflow.png)
 
 ---
 
