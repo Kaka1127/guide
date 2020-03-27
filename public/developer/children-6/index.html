@@ -8,7 +8,7 @@
 
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>ワークフロー :: My New Hugo Site</title>
+    <title>チュートリアル :: My New Hugo Site</title>
 
     
     <link href="/guide/css/nucleus.css?1585278577" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/guide/basics/children-4/">
+  <body class="" data-url="/guide/developer/children-6/">
     <nav id="sidebar" class="">
 
 
@@ -87,7 +87,7 @@
   
     
     <li data-nav-id="/guide/basics/" title="基本" class="dd-item 
-        parent
+        
         
         
         ">
@@ -176,7 +176,7 @@
  
   
     
-      <li data-nav-id="/guide/basics/children-4/" title="ワークフロー" class="dd-item active">
+      <li data-nav-id="/guide/basics/children-4/" title="ワークフロー" class="dd-item ">
         <a href="/guide/basics/children-4/">
         <b>4. </b>ワークフロー
         
@@ -205,7 +205,7 @@
   
     
     <li data-nav-id="/guide/developer/" title="開発者" class="dd-item 
-        
+        parent
         
         
         ">
@@ -336,7 +336,7 @@
  
   
     
-      <li data-nav-id="/guide/developer/children-6/" title="チュートリアル" class="dd-item ">
+      <li data-nav-id="/guide/developer/children-6/" title="チュートリアル" class="dd-item active">
         <a href="/guide/developer/children-6/">
         チュートリアル
         
@@ -408,7 +408,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="https://github.com/Kaka1127/guide/edit/master/content/basics/children-4.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="https://github.com/Kaka1127/guide/edit/master/content/developer/children-6.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -439,7 +439,7 @@
             
           
           
-            <a href='/guide/'>AI開発環境</a> > <a href='/guide/basics/'>基本</a> > ワークフロー
+            <a href='/guide/'>AI開発環境</a> > <a href='/guide/developer/'>開発者</a> > チュートリアル
           
          
           
@@ -456,7 +456,8 @@
   <ul>
     <li>
       <ul>
-        <li></li>
+        <li><a href="#cifar10を使ったチュートリアル">Cifar10を使ったチュートリアル</a></li>
+        <li><a href="#はじめに">はじめに</a></li>
       </ul>
     </li>
   </ul>
@@ -476,7 +477,7 @@
           
             <h1>
               
-              ワークフロー
+              チュートリアル
             </h1>
           
 
@@ -484,30 +485,17 @@
 
 
 
-<h4 id="開発者ワークフロー">開発者ワークフロー</h4>
-<p>システムを使うにあたり、Windowsのパソコンを使う場合とUbuntuのワークステーション向けに２つのワークフローがあります。</p>
+<h3 id="cifar10を使ったチュートリアル">Cifar10を使ったチュートリアル</h3>
+<h3 id="はじめに">はじめに</h3>
+<p>本チュートリアルでは、学習環境を使用する方法について簡単に説明します。<br>
+具体的には機械学習手法を試す際によく用いられるcifar-10の画像分類モデルを学習させる方法を以下の手順に沿って説明します。</p>
 <ul>
-<li>
-<p>Windowsパソコンで開発を行う場合</p>
-<ol>
-<li>ブラウザでRancherにアクセス</li>
-<li>カタログから環境の立ち上げ</li>
-<li>ブラウザでモデル開発環境にアクセス</li>
-<li>開発した環境の保存（必要あれば）</li>
-</ol>
-</li>
-<li>
-<p>ワークステーションを使用した開発を行う場合</p>
-<ol>
-<li>社内レジストリからイメージを入手</li>
-<li>入手したイメージでモデルを開発</li>
-<li>開発したコンテナを社内レジストリに保存</li>
-<li>ブラウザでRancherにアクセス</li>
-<li>作成したイメージを使用した計算ジョブをカタログから投入</li>
-</ol>
-</li>
+<li>データをアップロードする</li>
+<li>データセットを作成する</li>
+<li>学習を実行する</li>
+<li>TensorBoardで学習の状況を表示する</li>
+<li>学習のログを確認する</li>
 </ul>
-<p>具体的な使い方は詳細は<a href="/developer">管理者向けページ</a>で説明します。</p>
 
 
 <footer class="footline">
@@ -545,91 +533,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -705,6 +608,58 @@
             
         
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -737,6 +692,19 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
             
         
                     
@@ -744,6 +712,29 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -765,10 +756,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/guide/basics/children-3/" title="システム概要"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/guide/developer/children-5/" title="ワークステーション向け初期設定"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/guide/developer/" title="開発者" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/guide/admin/" title="管理者向け" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
