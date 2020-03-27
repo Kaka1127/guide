@@ -1,4 +1,4 @@
-baseURL = "https://Kaka1127.github.io"
+baseURL = "https://Kaka1127.github.io/guide"
 languageCode = "en-us"
 title = "My New Hugo Site"
 theme = "learn"
