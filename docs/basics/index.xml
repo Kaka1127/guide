@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>基本 on My New Hugo Site</title>
-    <link>https://Kaka1127.github.io/guide/basics/</link>
+    <link>https://Kaka1127.github.io/basics/</link>
     <description>Recent content in 基本 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://Kaka1127.github.io/guide/basics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://Kaka1127.github.io/basics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>はじめに</title>
-      <link>https://Kaka1127.github.io/guide/basics/children-1/</link>
+      <link>https://Kaka1127.github.io/basics/children-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/basics/children-1/</guid>
+      <guid>https://Kaka1127.github.io/basics/children-1/</guid>
       <description>システムで使われている技術 マクニカAI開発環境は、各開発者がブラウザ経由でAIを開発するためのアプリケーション環境を簡単に立ち上げることができます。
 このシステムでは「コンテナ」と呼ばれる技術仮想化技術をベースとしております。
 コンテナは以下のような理由により機械学習の開発において親和性が高く、昨今注目を浴びている技術です。
@@ -26,20 +26,20 @@ Dockerが初めての方はリンク先を参照してください。
     
     <item>
       <title>用語</title>
-      <link>https://Kaka1127.github.io/guide/basics/children-2/</link>
+      <link>https://Kaka1127.github.io/basics/children-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/basics/children-2/</guid>
+      <guid>https://Kaka1127.github.io/basics/children-2/</guid>
       <description>本システムで使われる用語 ユーザーガイドで使用される用語をまとめています。
    用語 説明     Docker コンテナ仮想化技術の１つで、2020年現在ではコンテナ仮想化技術の業界標準になっています。   Dockerイメージ イメージはコンテナの基になるデータで、OSやライブラリなどを含むファイル群が含まれています。   Docker Hub ユーザーが作成したコンテナをアップロードして公開・共有できるサービスで、ここで公開されているコンテナは自由にダウンロードして自分のサーバーに簡単にデプロイできます。   レジストリ コンテナイメージを管理、保存するための場所です。一般にはDocker Hub、NGC（NVIDIA GPU Could）など公開されているレジストリがあります。このシステムでは社内専用イメージが格納されたプライベートレジストリ「Harbor」が使えます。   NGC NVIDIA GPU CLOUDの略です。NVIDIAで検証されたコンテナイメージや学習済みのモデルなどが無償で配布されています。入手にはユーザー登録が必要です。   Rancher コンテナ管理のプラットフォームを提供するアプリケーションです。Rancherのカタログ機能を使用してHarborやNGCにあるイメージを使った開発環境（コンテナ）の立ち上げを行います。   カタログ コンテナを起動するためのテンプレートでRancherで使用します。穴埋め式で必要事項を記入するとコンテナが起動できます。   Harbor Docker Hubのような、コンテナイメージを保存し公開する機能を実装したソフトウェアです。   Portainer Dockerの操作をGUIで行うことができます。   Grafana 情報収集/監視ツールと組み合せで使用する可視化することができるツールです。   Kubernetes クラスタのリソース管理、配分、スケジューリング等の基本的な機能を提供するコンテナオーケストレーションを行います。   Gitlab ソフトウェア開発支援環境で、「GitHub」のようなサービスを社内などのクローズド環境に独自で構築できるGitリポジトリマネージャーです。    </description>
     </item>
     
     <item>
       <title>システム概要</title>
-      <link>https://Kaka1127.github.io/guide/basics/children-3/</link>
+      <link>https://Kaka1127.github.io/basics/children-3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/basics/children-3/</guid>
+      <guid>https://Kaka1127.github.io/basics/children-3/</guid>
       <description>AI開発において、本システムがカバーする範囲 データ前処理から性能テストまで、それぞれの開発環境が立ち上げ可能
  環境構成 本システムで構成されている要素は下記の通りです。
    構成要素 説明     管理サーバ システム全体に関連した情報を取り扱うためのサーバー。   計算ノード 指示されたジョブを実行するサーバー。   開発者 ブラウザ経由で管理サーバに環境立ち上げ指示を行います。   共有ストレージ 学習に使用するデータを置くストレージ。学習結果もここに出力させる必要があります。     開発環境を立ち上げるまでの流れ   Rancherにログイン
@@ -50,10 +50,10 @@ Dockerが初めての方はリンク先を参照してください。
     
     <item>
       <title>ワークフロー</title>
-      <link>https://Kaka1127.github.io/guide/basics/children-4/</link>
+      <link>https://Kaka1127.github.io/basics/children-4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/basics/children-4/</guid>
+      <guid>https://Kaka1127.github.io/basics/children-4/</guid>
       <description>開発者ワークフロー システムを使うにあたり、Windowsのパソコンを使う場合とUbuntuのワークステーション向けに２つのワークフローがあります。
   Windowsパソコンで開発を行う場合
  ブラウザでRancherにアクセス カタログから環境の立ち上げ ブラウザでモデル開発環境にアクセス 開発した環境の保存（必要あれば）    ワークステーションを使用した開発を行う場合

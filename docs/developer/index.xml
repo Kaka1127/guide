@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>開発者 on My New Hugo Site</title>
-    <link>https://Kaka1127.github.io/guide/developer/</link>
+    <link>https://Kaka1127.github.io/developer/</link>
     <description>Recent content in 開発者 on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://Kaka1127.github.io/guide/developer/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://Kaka1127.github.io/developer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Rancherの使い方</title>
-      <link>https://Kaka1127.github.io/guide/developer/children-1/</link>
+      <link>https://Kaka1127.github.io/developer/children-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/developer/children-1/</guid>
+      <guid>https://Kaka1127.github.io/developer/children-1/</guid>
       <description>Rancherの用途 Rancherは主に以下の用途で利用します。
  カタログを使った開発環境の立ち上げ/立ち下げ 立ち上げた環境へのアクセス  リンク
  Rancher: http://10.xxx.xxx.xxx:9080   ログイン画面  ログイン方法 ログイン画面からユーザー名・パスワードを入力します。
@@ -34,10 +34,10 @@
     
     <item>
       <title>Harobrの使い方</title>
-      <link>https://Kaka1127.github.io/guide/developer/children-2/</link>
+      <link>https://Kaka1127.github.io/developer/children-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/developer/children-2/</guid>
+      <guid>https://Kaka1127.github.io/developer/children-2/</guid>
       <description>Harborの用途 Haborは主に以下の用途で利用します。
  Dockerイメージの管理 Rancherで環境を立ち上げる時にイメージを取得する先として利用する チームまたは自分専用のレジストリが持てる  リンク
  Harbor: http://10.xxx.xxx.xxx   ログイン画面  トップ画面    番号 説明     ① 権限のあるプロジェクトの一覧を確認できます。”library”は社内共通イメージが存在します。   ② ユーザー名が表示されます。ここを押すとパスワード変更、ログアウトすることができます。   ③ Harbor上で行ったイベント（削除、プロジェクト追加など）が表示されます。   ④ ログインしたユーザの権限で確認できるレポジトリ情報が表示されます。   ⑤ ログインしたユーザの権限で確認できるイベントのログ情報が確認できます。   ⑥ 新しくプロジェクトを作成、削除するためのボタンです。     ログイン方法 ログイン画面からユーザー名・パスワードを入力します。
@@ -49,10 +49,10 @@
     
     <item>
       <title>Portainerの使い方</title>
-      <link>https://Kaka1127.github.io/guide/developer/children-3/</link>
+      <link>https://Kaka1127.github.io/developer/children-3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/developer/children-3/</guid>
+      <guid>https://Kaka1127.github.io/developer/children-3/</guid>
       <description>Portainerの用途 Portainerは主に以下の用途で利用します。
  Harborに保存するためのイメージ名変更 Harborへのイメージ保存  リンク
  Portainer: http://10.xxx.xxx.xxx:9000   ログイン画面  トップ画面    番号 説明     ① メニュー画面です。   ② コンテナを管理している対象が一覧で表示されます。”local”は実行されている環境を意味します。   ③ ユーザー名が表示されます。パスワード変更、ログアウトすることができます。     ダッシュボード 管理する対象を選択すると稼働状況が確認できますが、使用するのは“Containers”と“Images”のみです。
@@ -64,10 +64,10 @@
     
     <item>
       <title>Grafanaの使い方</title>
-      <link>https://Kaka1127.github.io/guide/developer/children-4/</link>
+      <link>https://Kaka1127.github.io/developer/children-4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/developer/children-4/</guid>
+      <guid>https://Kaka1127.github.io/developer/children-4/</guid>
       <description>Grafanaの用途 Grafanaは主に以下の用途で利用します。
  GPUの稼働状況確認  リンク
  Grafana: http://10.xxx.xxx.xxx:30300   ログイン画面  トップ画面  ログイン方法 ログイン画面からユーザー名・パスワードを入力します。
@@ -77,10 +77,10 @@
     
     <item>
       <title>ワークステーション向け初期設定</title>
-      <link>https://Kaka1127.github.io/guide/developer/children-5/</link>
+      <link>https://Kaka1127.github.io/developer/children-5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/developer/children-5/</guid>
+      <guid>https://Kaka1127.github.io/developer/children-5/</guid>
       <description>dockerへの初期設定   TLS通信をしないアドレスを追加
  “/etc/docker/daemon.json”を編集  { &amp;quot;insecure-registries&amp;quot;: [&amp;quot;10.xxx.xxx.xxx&amp;quot;] }  ・ファイルが存在しない場合は作成ください。
  2. dockerの再起動
@@ -99,10 +99,10 @@ docker build -t &amp;lt;イメージ名&amp;gt;:&amp;lt;タグ名&amp;gt; .     
     
     <item>
       <title>チュートリアル</title>
-      <link>https://Kaka1127.github.io/guide/developer/children-6/</link>
+      <link>https://Kaka1127.github.io/developer/children-6/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://Kaka1127.github.io/guide/developer/children-6/</guid>
+      <guid>https://Kaka1127.github.io/developer/children-6/</guid>
       <description>Cifar10を使ったチュートリアル はじめに 本チュートリアルでは、学習環境を使用する方法について簡単に説明します。
 具体的には機械学習手法を試す際によく用いられるcifar-10の画像分類モデルを学習させる方法を以下の手順に沿って説明します。
  データをアップロードする データセットを作成する 学習を実行する TensorBoardで学習の状況を表示する 学習のログを確認する  </description>
