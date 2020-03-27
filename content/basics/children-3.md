@@ -8,7 +8,7 @@ pre : "<b>3. </b>"
 
 データ前処理から性能テストまで、それぞれの開発環境が立ち上げ可能  
 
-![system](/static/images/system.png)
+![system](system.png)
 
 ---
 
