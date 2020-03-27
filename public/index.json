@@ -1,0 +1,141 @@
+[
+{
+	"uri": "http://10.13.20.42:10080/root/guide/macnica/first-content/",
+	"title": "Ansibleによる環境構築",
+	"tags": [],
+	"description": "",
+	"content": "作業内容 Ansibleを使い、環境構築を実施する\n Asnible導入 用意したファイルを一式コピー テストプレイブックの実行 本番のプレイブックを実行  1. Asnible導入 サーバーへの接続のために踏み台となるPC(Ubuntu)にAnsibleを導入する\n$ sudo apt install software-properties-common $ sudo apt-add-repository ppa:ansible/ansible $ sudo apt update $ sudo apt install ansible $ ansible --version 2. 用意したファイルを一式コピー 用意したファイルを踏み台サーバーにコピーする\n3. 接続確認のためのテストプレイブックを実行する\n3-1.\u0026ldquo;hitachi/test/ansible/inventories/hosts\u0026quot;を編集\n[master:vars] ansible_host=\u0026lt;管理サーバのIPアドレス\u0026gt; ansible_ssh_user=\u0026lt;管理サーバのユーザ名\u0026gt; ansible_ssh_pass=\u0026lt;管理サーバのパスワード\u0026gt; ansible_sudo_pass=\u0026lt;管理サーバのパスワード\u0026gt; [dgx:vars] ansible_host=\u0026lt;DGXのIPアドレス\u0026gt; ansible_ssh_user=\u0026lt;DGXのユーザ名\u0026gt; ansible_ssh_pass=\u0026lt;DGXのパスワード\u0026gt; ansible_sudo_pass=\u0026lt;DGXのパスワード\u0026gt; 3-2.プレイブックを実行し、OSやバージョンが確認できればOK\ncd hitachi/test/ansible ansible-playbook --inventory inventories/poc site.yml  出力例  nvidia@nvidia-laptop-01:~/Desktop/ansible$ ansible-playbook --inventory inventories/poc site.yml PLAY [Print linux distribution and version] ************************************************************************************************************************************** TASK [Gathering Facts] *********************************************************************************************************************************************************** ok: [workstation.com] ok: [dgxstation.com] TASK [OS information] ************************************************************************************************************************************************************ changed: [dgxstation.com] changed: [workstation.com] TASK [debug] ********************************************************************************************************************************************************************* ok: [workstation.com] =\u0026gt; { \u0026quot;msg\u0026quot;: \u0026quot;NAME=\\\u0026quot;Ubuntu\\\u0026quot;\\nVERSION=\\\u0026quot;18.04.2 LTS (Bionic Beaver)\\\u0026quot;\\nID=ubuntu\\nID_LIKE=debian\\nPRETTY_NAME=\\\u0026quot;Ubuntu 18.04.2 LTS\\\u0026quot;\\nVERSION_ID=\\\u0026quot;18.04\\\u0026quot;\\nHOME_URL=\\\u0026quot;https://www.ubuntu.com/\\\u0026quot;\\nSUPPORT_URL=\\\u0026quot;https://help.ubuntu.com/\\\u0026quot;\\nBUG_REPORT_URL=\\\u0026quot;https://bugs.launchpad.net/ubuntu/\\\u0026quot;\\nPRIVACY_POLICY_URL=\\\u0026quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\\\u0026quot;\\nVERSION_CODENAME=bionic\\nUBUNTU_CODENAME=bionic\u0026quot; } ok: [dgxstation.com] =\u0026gt; { \u0026quot;msg\u0026quot;: \u0026quot;NAME=\\\u0026quot;DGX OS\\\u0026quot;\\nVERSION=\\\u0026quot;18.04.3 LTS (Bionic Beaver)\\\u0026quot;\\nID=ubuntu\\nID_LIKE=debian\\nPRETTY_NAME=\\\u0026quot;Ubuntu 18.04.3 LTS\\\u0026quot;\\nVERSION_ID=\\\u0026quot;18.04\\\u0026quot;\\nHOME_URL=\\\u0026quot;https://www.ubuntu.com/\\\u0026quot;\\nSUPPORT_URL=\\\u0026quot;https://help.ubuntu.com/\\\u0026quot;\\nBUG_REPORT_URL=\\\u0026quot;https://bugs.launchpad.net/ubuntu/\\\u0026quot;\\nPRIVACY_POLICY_URL=\\\u0026quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\\\u0026quot;\\nVERSION_CODENAME=bionic\\nUBUNTU_CODENAME=bionic\u0026quot; } TASK [Check DGX server] ********************************************************************************************************************************************************** ok: [dgxstation.com] ok: [workstation.com] TASK [Check for DGX OS] ********************************************************************************************************************************************************** skipping: [workstation.com] changed: [dgxstation.com] TASK [debug] ********************************************************************************************************************************************************************* skipping: [workstation.com] ok: [dgxstation.com] =\u0026gt; { \u0026quot;dgx\u0026quot;: { \u0026quot;changed\u0026quot;: true, \u0026quot;cmd\u0026quot;: [ \u0026quot;cat\u0026quot;, \u0026quot;/etc/dgx-release\u0026quot; ], \u0026quot;delta\u0026quot;: \u0026quot;0:00:00.303450\u0026quot;, \u0026quot;end\u0026quot;: \u0026quot;2020-03-23 17:36:15.262059\u0026quot;, \u0026quot;failed\u0026quot;: false, \u0026quot;rc\u0026quot;: 0, \u0026quot;start\u0026quot;: \u0026quot;2020-03-23 17:36:14.958609\u0026quot;, \u0026quot;stderr\u0026quot;: \u0026quot;\u0026quot;, \u0026quot;stderr_lines\u0026quot;: [], \u0026quot;stdout\u0026quot;: \u0026quot;DGX_NAME=\\\u0026quot;DGX Station\\\u0026quot;\\nDGX_PRETTY_NAME=\\\u0026quot;NVIDIA DGX Station\\\u0026quot;\\nDGX_SWBUILD_DATE=\\\u0026quot;2019-12-02\\\u0026quot;\\nDGX_SWBUILD_VERSION=\\\u0026quot;4.3.0\\\u0026quot;\\nDGX_COMMIT_ID=\\\u0026quot;2a6a115\\\u0026quot;\\nDGX_SERIAL_NUMBER=\\\u0026quot;0150319000037\\\u0026quot;\\n\\nDGX_R418_REPO_ENABLED=20200114-224402\u0026quot;, \u0026quot;stdout_lines\u0026quot;: [ \u0026quot;DGX_NAME=\\\u0026quot;DGX Station\\\u0026quot;\u0026quot;, \u0026quot;DGX_PRETTY_NAME=\\\u0026quot;NVIDIA DGX Station\\\u0026quot;\u0026quot;, \u0026quot;DGX_SWBUILD_DATE=\\\u0026quot;2019-12-02\\\u0026quot;\u0026quot;, \u0026quot;DGX_SWBUILD_VERSION=\\\u0026quot;4.3.0\\\u0026quot;\u0026quot;, \u0026quot;DGX_COMMIT_ID=\\\u0026quot;2a6a115\\\u0026quot;\u0026quot;, \u0026quot;DGX_SERIAL_NUMBER=\\\u0026quot;0150319000037\\\u0026quot;\u0026quot;, \u0026quot;\u0026quot;, \u0026quot;DGX_R418_REPO_ENABLED=20200114-224402\u0026quot; ] } } PLAY RECAP *********************************************************************************************************************************************************************** dgxstation.com : ok=6 changed=2 unreachable=0 failed=0 skipped=0 rescued=0 ignored=0 workstation.com : ok=4 changed=1 unreachable=0 failed=0 skipped=2 rescued=0 ignored=0 4. 本番用のプレイブックを編集\n4-1.\u0026ldquo;hitachi/ansible/inventories/hosts\u0026quot;を編集\n[master:vars] ansible_host=\u0026lt;管理サーバのIPアドレス\u0026gt; ansible_ssh_user=\u0026lt;管理サーバのユーザ名\u0026gt; ansible_ssh_pass=\u0026lt;管理サーバのパスワード\u0026gt; ansible_sudo_pass=\u0026lt;管理サーバのパスワード\u0026gt; #test = true [dgx:vars] ansible_host=\u0026lt;DGXのIPアドレス\u0026gt; ansible_ssh_user=\u0026lt;DGXのユーザ名\u0026gt; ansible_ssh_pass=\u0026lt;DGXのパスワード\u0026gt; ansible_sudo_pass=\u0026lt;DGXのパスワード\u0026gt; #test = true 4-2.\u0026ldquo;hitachi/ansible/inventories/group_vars/all.yaml\u0026quot;を編集\nserver_user: \u0026lt;管理サーバのユーザ名\u0026gt; server_ip: \u0026lt;管理サーバのパスワード\u0026gt; #server_name: \u0026lt;管理サーバ名\u0026gt; dgx_user: \u0026lt;DGXのユーザ名\u0026gt; dgx_ip: \u0026lt;DGXのIPアドレス\u0026gt; #dgx_name: \u0026lt;DGX名\u0026gt; #太田様の情報を流用しているため、基本的には変更の必要はない http_proxy: http://23312040:Waka0815@obprx02.intra.hitachi.co.jp:8080 https_proxy: http://23312040:Waka0815@obprx02.intra.hitachi.co.jp:8080 no_proxy: localhost,127.0.0.1,::1,\u0026quot;{{ server_ip }}\u0026quot;,\u0026quot;{{ dgx_ip }}\u0026quot; 4-3.プレイブックを実行\n$ cd hitachi/ansible $ ansible-playbook --inventory inventories/poc site.yml エラーがなければ完了\n"
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/developer/children-1/",
+	"title": "Rancherの使い方",
+	"tags": [],
+	"description": "",
+	"content": "Rancherの用途  カタログを使った開発環境の立ち上げ/立ち下げ 立ち上げた環境へのアクセス  リンク\n Rancher: http://10.xxx.xxx.xxx:9080   ログイン画面  ログイン方法 ログイン画面からユーザー名・パスワードを入力します。\nユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。\n  ログイン直後のトップ画面    番号 説明     ① 管理しているクラスターの一覧です。複数のクラスターがあれば複数表示されます。    クラスターとは\n複数台のPCやサーバーをネットワークで接続し、ひとつのコンピュータに見立てて利用できるようにしたシステムです。\nカタログから環境立ち上げを依頼するとクラスター下にあるPCやサーバーの使用状況を見て、環境立ち上げを自動的に行ってくれます。\n  カタログを使った開発環境の起動  プロジェクトへの移動 Harborの認証情報登録 カタログを使ったアプリの起動 立ち上げた環境へのアクセス  アプリ起動する際に既存の設定をコピーするクローン機能がありますが、クローンを使うとアプリ画面から削除してもコンテナが消えない現象が発生します。\nもし、クローンでアプリを作成した場合はアプリ画面から削除の上、ワークロードから直接削除する必要があります。\n  1. プロジェクトへの移動 左上の”グローバル”からアクセス可能なクラスターにある”プロジェクト”を選択します。\nプロジェクトとは\nチームや開発プロジェクト単位でメンバーを管理するための仕組みとして利用できます。\n特に会社全体でクラスターを利用するような場合においてはチーム間の秘匿性を保つための仕組みとしても利用できます。\n   プロジェクトトップ画面の説明    プロジェクトトップ画面    番号 説明     ① 稼働しているアプリケーション一覧が表示されます。   ② プロジェクトのトップベージが開かれます。稼働中の状態を確認するワークロードやHarborの認証情報（シークレット）登録を行う際に利用します。   ③ 開発するためのアプリケーションを起動するための画面に移動します。   ④ このプロジェクトにアクセスできるメンバーが表示されます。   ⑤ ワークロードおよびサービスディスカバリーのみこのシステムでは利用します。         2. シークレットの登録 Harobrからアプリケーションのイメージを入手するために、Harborの認証情報を登録します。\nHarborについてはこちらを参照してください。\n   「リソース」→ 「シークレット」で移動   「レジストリ」のタブを選択   右側にある「レジストリを追加」を選択   必要事項を記入して登録\n 名前：Harborと同じ名前を入力 スコープ：「このプロジェクトすべての名前空間で使用可能」を選択 カスタム：HarborのIPアドレスを入力 ユーザー名：Harborにログインする際のユーザ名 パスワード：Harborにログインする際のパスワード   Harbor以外のNGCやDockerHubのレジストリを使う場合も登録する必要があります。\n    3. カタログを使ったアプリの起動   Appのボタンを押す\n起動しているアプリケーションやアプリを起動するための画面が表示されます。\n  アプリ画面の説明    アプリ画面    番号 説明     ① 稼働しているアプリケーション一覧が表示されます。   ② アプリの起動ボタンです。   ③ ブラウザでアクセス可能なアプリケーションの場合、ポート番号が表示されます。          「起動」ボタンを押し、使用したいカタログを選択   カタログの中にある使い方を確認しながら、必要事項を設定   アプリのトップ画面で状況確認\nクラスターのリソースが空いていれば、アプリケーションが実行されます。\n作成したアプリを押すことで詳細情報が確認ができ、エラーなのかリソース待ちなのか確認できます。   エラーなのかリソース待ちなのか判断する方法    確認するための4ステップ  エラーが発生しているアプリを選択  ワークロードにあるコンテナを選択  ポッドにあるコンテナを選択  Eventsを開く    判断方法  リソース待ちの場合\n”0/2 nodes are available: 2 Insufficient nvidia.com/gpu.”という内容が表示されている。\n エラーの場合 上記以外は全てエラーです。  例            4.立ち上げた環境へのアクセス 立ち上げた環境にアクセスするための方法は２つあります。\n ターミナルでアクセス  UIが使える場合は表示されたポート番号からアプリにアクセス アプリ画面から\nアプリ詳細画面から    カタログを使った開発環境の削除 アプリのトップ画面から削除ボタンを押す\nワークロード画面からアプリの削除を行うとアプリケーション画面では残ったままになるため、行わないでください。\n "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/basics/children-1/",
+	"title": "はじめに",
+	"tags": [],
+	"description": "",
+	"content": "システムで使われている技術 マクニカAI開発環境は、各開発者がブラウザ経由でAIを開発するためのアプリケーション環境を簡単に立ち上げることができます。\nこのシステムでは「コンテナ」と呼ばれる技術仮想化技術をベースとしております。\nコンテナは以下のような理由により機械学習の開発において親和性が高く、昨今注目を浴びている技術です。\n 面倒な環境構築が最低限になり、バージョン依存関係エラーが起きない 環境が揃ったDockerイメージが豊富  NVIDIAからもGPUに最適化されたイメージが提供されている（NGC）   開発した環境をチーム内で共有可能 環境を破壊することなく破棄、再起動ができることから、スクラップ＆ビルドが簡単  このシステムはコンテナを扱うための詳細な知識がなくても、カタログと呼ばれるテンプレートに必要事項を記入するだけで簡単にコンテナ（アプリケーション）を起動することができますが、開発者がDockerの初歩の知識を持っていることが望ましいです。\nDockerが初めての方はリンク先を参照してください。\n Dockerとはなにか コンテナとはなにか Docker公式チュートリアル  "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/basics/",
+	"title": "基本",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 1 基本編  はじめに   用語   システム概要   ワークフロー   "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/developer/children-2/",
+	"title": "Harobrの使い方",
+	"tags": [],
+	"description": "",
+	"content": "Harborの用途  Dockerイメージの管理 Rancherで環境を立ち上げる時にイメージを取得する先として利用する チームまたは自分専用のレジストリが持てる  リンク\n Harbor: http://10.xxx.xxx.xxx   ログイン画面  トップ画面    番号 説明     ① 権限のあるプロジェクトの一覧を確認できます。”library”は社内共通イメージが存在します。   ② ユーザー名が表示されます。ここを押すとパスワード変更、ログアウトすることができます。   ③ Harbor上で行ったイベント（削除、プロジェクト追加など）が表示されます。   ④ ログインしたユーザの権限で確認できるレポジトリ情報が表示されます。   ⑤ ログインしたユーザの権限で確認できるイベントのログ情報が確認できます。   ⑥ 新しくプロジェクトを作成、削除するためのボタンです。     ログイン方法 ログイン画面からユーザー名・パスワードを入力します。\nユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。\n  チーム/自分専用のレジストリ作成   専用レジストリの作成\n トップ画面の”New PROJECT”ボタンを押す ”ProjectName”をつける Access Levelを“Public”にするとログインできるユーザ全てに公開されます。\n  トップ画面で確認     チームで共有のプロジェクトでユーザ追加する場合\n プロジェクトにある“Members”から“＋USER”を押す  ”Name”から登録されているユーザを選択し、権限を付与  Admin：メンバー管理、プロジェクトの設定などの権限を持つ Master：イメージの削除など“Developer”以上の権限を持つ Developer：プロジェクトの読み取り権限と書き込み権限 Guest：プロジェクトの読み取り専用の権限 権限に関する詳細はこちらを参照してください。\n    参加メンバーの確認     以降は主にワークステーションを使った開発者向けに説明を行います。\n  イメージの取得/保存方法 イメージの保存、取得には予めDockerコマンドでログインしておきます。\n$ sudo docker login 10.xxx.xxx.xxx  ・DockerコマンドでHarborにログインするにはdockerのDaemonに対して事前にセットアップする必要があります。\n・詳細はワークステーション向け初期設定を確認ください。\n   取得方法 Docker Pullコマンドでイメージを取得\n$ sudo docker pull 10.xxx.xxx.xxx/library/tensorflow:20.02-tf2-py3  権限のないプロジェクトからイメージを取得することはできません。\n   保存方法 Docker Pushコマンドでイメージを取得\n$ sudo docker push 10.xxx.xxx.xxx/kato/test:1.0  ・権限のないプロジェクトへの保存はできません。\n・Publicではないプロエジェクトにイメージを保存する場合は予めプロジェクトを作成しておく必要があります。\n・イメージ名の変更方法に関してはワークステーション向け初期設定を確認ください。\n   "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/macnica/second-content/",
+	"title": "NFSサーバーの立ち上げ",
+	"tags": [],
+	"description": "",
+	"content": "作業内容 Kuberneteを立ち上げる前にNFSの設定を行う\n NFSで共有するディレクトリを指定 ディレクトリの作成 ディレクトリのマウント 再起動してもマウントできるよう設定  1. NFSで共有するディレクトリを指定\n共有するためのストレージがマウントされている先を指定と変更適用\n$ sudo vim /etc/exports --- /luks xxx.xxx.xxx.0/255.255.xxx.0(rw,sync,no_subtree_check,all_squash) xxxには所属するIPアドレスが使用される。 --- $ sudo exportfs -rv 2. ディレクトリ作成\n共有するためのディレクトリを管理サーバ、DGXで作成する\n$ sudo mkdir -p /nfs $ sudo chown nobody:nogroup /nfs 3. ディレクトリのマウント\n管理サーバおよびDGXで以下のマウントコマンドを実行する\n$ sudo mount -t nfs xxx.xxx.xxx.xxx:/luks /nfs 4. 再起動してもマウントできるよう設定\n再起動しても自動でマウントするように以下のファイルを修正する\n$ sudo vim /etc/fstab --- xxx.xxx.xxx.xxx:/luks /nfs nfs rw,nosuid,_netdev,auto,hard,intr 0 0 --- "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/basics/children-2/",
+	"title": "用語",
+	"tags": [],
+	"description": "",
+	"content": "本システムで使われる言語    用語 説明     Docker コンテナ仮想化技術の１つで、2020年現在ではコンテナ仮想化技術の業界標準になっています。   Dockerイメージ イメージはコンテナの基になるデータで、イメージにはOSやライブラリなどを含むファイル群が含まれています。   Docker Hub ユーザーが作成したコンテナをアップロードして公開・共有できるサービスで、ここで公開されているコンテナは自由にダウンロードして自分のサーバーに簡単にデプロイできます。   レジストリ コンテナイメージを管理、保存するための場所です。一般にはDocker Hub、NGC（NVIDIA GPU Could）など公開されているレジストリがあります。このシステムでは社内専用イメージが格納されたプライベートレジストリ「Harbor」が使えます。   Rancher コンテナ管理のプラットフォームを提供するアプリケーションです。Rancherのカタログ機能を使用してHarborやNGCにあるイメージを使った開発環境（コンテナ）の立ち上げを行います。   カタログ コンテナを起動するためのテンプレートのようなです。穴埋め式で必要事項を記入するとコンテナが起動できます。   Harbor Docker Hubのような、コンテナイメージを保存し公開する機能を実装したソフトウェアです。   Portainer Dockerの操作をGUIで行うことができます。   Grafana 情報収集、関しツールと組み合せで使用する可視化することができるツールです。   Kubernetes クラスタのリソース管理、配分、スケジューリング等の基本的な機能を提供するコンテナオーケストレーションを行います。   Gitlab ソフトウェア開発支援環境で、「GitHub」のようなサービスを社内などのクローズド環境に独自で構築できるGitリポジトリマネージャーです。    "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/developer/",
+	"title": "開発者",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 2 開発者向けガイド 開発者がシステムを利用するために必要な項目を記載しています。\n以下のチャートを参考に読むべきページを確認ください。\ngraph TD; A(Start) -- B[Rancherの使い方] B -- C[Harborの使い方] C -- D{GPUの利用状況を確認} D -- |はい| E[Grafanaの使い方] D -- |いいえ| F{ワークステーションの利用} E -- F F -- |はい| G[ワークステーション向け初期設定] F -- |いいえ| K{開発した環境を保存するか} G -- Z K -- |はい| H[Portainerの使い方] K -- |いいえ| Z[終了] H -- Z E -- Z   Rancherの使い方   Harobrの使い方   Portainerの使い方   Grafanaの使い方   ワークステーション向け初期設定   "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/admin/",
+	"title": "管理者向け",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 3 Some Chapter title Lorem Ipsum.\n"
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/macnica/third-content/",
+	"title": "Kubernetes導入",
+	"tags": [],
+	"description": "",
+	"content": "作業内容 Rancherを利用してKubernetes環境を立ち上げる\n Rancherにログイン クラスターの初期設定と構築 Kubectlへのconfig登録 NVIDIA Device pluginの適応  1. Rancherにログイン\n1-1. 管理サーバで動作しているRancherにアクセス\nhttp://\u0026lt;管理サーバのIP\u0026gt;:9080\n1-2. 管理者向けパスワードを登録\nパスワード：password\n2. クラスターの初期設定\n2-1.「クラスター追加」ボタンを押す\n2-2.「カスタム」ボタンを押す\n2-3. 以下の様に設定を行い、「次へ」を押す\n クラスター名：dgx-cluster Kubernetes バージョン：v1.17.x-rancher1-1 ネットワークプロバイダー：Canal イングレスプロバイダー：無効 Metrics Server Monitoring：無効 ノードの Docker バージョン：サポートされている Docker バージョンを要求 Recurring etcd Snapshot Enabled：無効  2-4. ノードオプションで管理サーバとDGX向けのコマンドを生成と実行\n  管理サーバ\n ノードロール：「etcd」「control」「worker」を選択 ノードアドレス：管理サーバのIP(「パブリック IP」と「プライベート IP」の両方) ノード名：management    DGX向け\n ノードロール：「worker」のみ選択 ノードアドレス：DGXのIP(「パブリック IP」と「プライベート IP」の両方) ノード名：dgx-station-01    Kubernetes導入のためのコマンドを実行を各サーバで実行し、クラスター管理画面で状態が「Active」になるまで待つ\n2-5. 各ノードにラベル付け\n  管理サーバ\n exporter=master    DGX\n gpu=dgx-s hardware-type=NVIDIAGPU    3. Kubectlへのconfig登録\n3-1. クラスターを開き、kubeconfigファイルをコピー\n3-2. 管理サーバにコピーしたkubeconfig情報を\u0026quot;~/.kube/config\u0026quot;に保存\n3-3. kubectlを実行し、情報が取得できればOK\n$ kubectl get nodes 4. NVIDIA Device pluginの適応\n4-1. 以下のコマンドを実行\n$ cd $ kubectl apply -f nvidia-device-plugin.yml 4-2. プラグインの動作確認のために以下を実行し、GPUの情報が取れればOK\n$ kubectl run gpu-test --rm -t -i --restart=Never --image=nvidia/cuda:10.0-base --limits=nvidia.com/gpu=1 -- nvidia-smi "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/developer/children-3/",
+	"title": "Portainerの使い方",
+	"tags": [],
+	"description": "",
+	"content": "Portainerの用途  Harborに保存するためのイメージ名変更 Harborへのイメージ保存  リンク\n Portainer: http://10.xxx.xxx.xxx:9000   ログイン画面  トップ画面    番号 説明     ① メニュー画面です。   ② コンテナを管理している対象が一覧で表示されます。”local”は実行されている環境を意味します。   ③ ユーザー名が表示されます。パスワード変更、ログアウトすることができます。     ダッシュボード 管理する対象を選択すると稼働状況が確認できますが、使用するのは“Containers”と“Images”のみです。\n ログイン方法 ログイン画面からユーザー名・パスワードを入力します。\nユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。\n  初期設定 Harborに保存するためにHarborへのアクセス権限を登録します\n 左側のメニューから“Registries”を選択 “Add registry”を押す  \u0026ldquo;Custom Registry\u0026quot;を選択の上、必要事項を記入  Name: ログインIDと同じ名前 Registry URL：HarborのIPアドレス Userneme：HarborにログインするID Password：ログインIDのパスワード    保存   立ち上げたコンテナの保存 Rancherのカタログで立ち上げた環境で開発が完了したコンテナを保存します。\n  ダッシュボードトップまたは左メニューの“Containers”を選択\n  表示された稼働中のコンテナ一覧から保存したいコンテナを選択   “Create Image”の“Registry”で自分のIDを選択し、Imageに名前をつける 保存先になるHarborのプロジェクトは先に作成しておく必要があります。 アクセス権限のないHarborのプロジェクトには保存できません。\n   ダッシュボードトップまたは左メニューの“Images”を選択\n  作成したイメージを選択 ”Created”でソートするとイメージを見つけやすいです。\n   Pushのボタンを押してイメージを保存   "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/basics/children-3/",
+	"title": "システム概要",
+	"tags": [],
+	"description": "",
+	"content": "AI開発において、本システムがカバーする範囲 データ前処理から性能テストまで、それぞれの開発環境が立ち上げ可能\n環境構成 本システムで構成されている要素は下記の通りです。\n   構成要素 説明     管理サーバ システム全体に関連した情報を取り扱うためのサーバー。   計算ノード 指示されたジョブを実行するサーバー。   開発者 ブラウザ経由で管理サーバに環境立ち上げ指示を行います。   共有ストレージ 学習に使用するデータを置くストレージ。学習結果もここに出力させる必要があります。    開発環境を立ち上げるまでの流れ   Rancherにログイン\n  カタログに必要事項を記入\n  立ち上がった環境にアクセスして開発\n  "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/developer/children-4/",
+	"title": "Grafanaの使い方",
+	"tags": [],
+	"description": "",
+	"content": "Grafanaの用途  GPUの稼働状況確認  リンク\n Grafana: http://10.xxx.xxx.xxx:30300   ログイン画面  トップ画面  ログイン方法 ログイン画面からユーザー名・パスワードを入力します。\nユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。\n  GPUの稼働状況確認   左上にある”Home”より”General”にある”GPU”を選択   GPUの情報が集約されたダッシュボードが表示   "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/basics/children-4/",
+	"title": "ワークフロー",
+	"tags": [],
+	"description": "",
+	"content": "開発者ワークフロー システムを使うにあたり、Windowsのパソコンを使う場合とUbuntuのワークステーション向けに２つのワークフローがあります。\n  Windowsパソコンで開発を行う場合\n ブラウザでRancherにアクセス カタログから環境の立ち上げ ブラウザでモデル開発環境にアクセス 開発した環境の保存（必要あれば）    ワークステーションを使用した開発を行う場合\n 社内レジストリからイメージを入手 入手したイメージでモデルを開発 開発したコンテナを社内レジストリに保存 ブラウザでRancherにアクセス 作成したイメージを使用した計算ジョブをカタログから投入    具体的な使い方は詳細は管理者向けページで説明します。\n"
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/macnica/fourth-content/",
+	"title": "初期設定",
+	"tags": [],
+	"description": "",
+	"content": "作業内容 各ツールで初期設定を行う\n Gitlab Harbor Rancher Portainer Grafana その他   1. Gitlab  実施内容\n1-1. 初期設定\n1-2. カタログ修正確認\n1-3. カタログプロジェクトの作成/保存  1-1. 初期設定\n  Gitlabにアクセスし、\u0026ldquo;root\u0026quot;のパスワードを設定し、管理者権限でログイン\n  「Admin Area」にアクセス\n  「Settings」-\u0026gt; 「CI/CD」を選択\n  以下のチェックを外す\n 「Default to Auto DevOps pipeline for all projects」 「Enable shared runners for new projects」    「Settings」-\u0026gt; 「General」を選択\n  「Sign-up restrictions」にある「Sign-up enabled」のチェックを外す\n  1-2. カタログの修正確認\n保存するカタログがお客様向けになっているか確認\n\u0026ldquo;各チャート\u0026quot;下にある”README.md\u0026quot;values.ymal\u0026quot;と”question.yaml”を編集\n README.md  使用するDockerイメージの確認の記述を変更（cleansing,learning)   values.yaml  PROXYのURL repository,tagの名前 system.internalのIPアドレス   question.yml  variable: defaultImage ”description”と”default”、”tag”の記述 各タグの”default”の内容    1-3. カタログプロジェクトの作成/保存\n管理者権限でカタログ保存するためのプロジェクトを作成\n  「New Project」を選択し、 以下の内容で設定\n プロジェクト名：custom_catalog Visibility Level：”Public”    「Create Project」を選択\n  以下の手順でカタログを保存する\n$ git config --global user.name \u0026quot;Administrator\u0026quot; $ git config --global user.email \u0026quot;admin@example.com\u0026quot; $ cd \u0026lt;custom_catalog dir\u0026gt; $ git init $ git remote add origin http://xxx.xxx.xxx:10080/root/custom_catalog.git $ git add . $ git commit -m \u0026quot;Initial commit\u0026quot; $ git push -u origin master    2. Harbor  実施内容\n2-1. ユーザ登録/権限登録\n2-2. 社内イメージの登録  2-1. ユーザ登録/権限登録\n Harborにアクセスし、IDを\u0026quot;admin\u0026rdquo;、PWを”password”で管理者としてログイン ”Administration”の\u0026quot;Users\u0026quot;を選択 ”NEW UESR”を選択し、登録    名前 ID 　パスワード 　メールアドレス     Moritaka Oota m-oota Password123 m.oota.nm@hitachi-kenki.com   Satomi Kunimatsu s-kunimatsu Password123 s.kunimatsu.ja@hitachi-kenki.com   Roh Joonyoung j-noh Password123 j.roh.qy@hitachi-kenki.com      2-2. 社内イメージの登録\n  管理サーバでHarborとNGCにログイン\n$ sudo docker login xxx.xxx.xxx.xxx    場所 ID 　パスワード     xxx.xxx.xxx admin password   nvcr.io $oauthtoken ajB0djRjaDkxdHE4aDA0NHY3bWZhZmlqOWU6MDcyYjkyZmMtNzlkNC00ZGE2LTk5YTUtYjBkNWViNzhkOGJi      テンプレートのsetup.shに含まれる{{domain_name}}を全てHarborのIPアドレスに置き換え　  create-image.shを実行\n$ cd ~/images $ sudo ./create-image.sh    3. Rancher  実施内容\n3-1. ユーザ登録/権限登録\n3-2. カタログ登録\n3-3. HarborとNGCのクレデンシャル登録  3-1. ユーザ登録/権限登録\n  Rancherにアクセスし、IDを\u0026quot;admin\u0026rdquo;、PWを”password”で管理者としてログイン\n  クラスター管理画面にある”ユーザ”を選択し、”ユーザを追加”を押す\n  ユーザー名、パスワード、表示名は下記の通り設定し、\u0026rdquo;\u0026rdquo; User-Baseと”Use Catalog Templates”にチェック\n   表示名 ID 　パスワード     Oota m-oota 　Password123   Kunimatsu s-kunimatsu Password123   Roh j-noh Password123      プロジェクトにユーザを紐づけるためにクラスターのプロジェクトを選択\n  メンバーから”メンバー追加”を押し、\u0026ldquo;Project Memeber\u0026quot;として追加\n  3-2. カタログ登録\n  作成されたプロジェクトの”App”を選択\n  \u0026ldquo;Managed Catalog\u0026quot;から”カタログ追加”を選択\n  以下のように設定し、作成ボタンを押す\n 名前：Hitachi URL: http://xxx.xxx.xxx:10080/root/custom-catalog.git ブランチ：master    ”起動”を押してカタログの表示を確認（無い場合は”読み込み”ボタンを押してみる）\n  3-3. HarborとNGCのクレデンシャル登録\n 作成されたプロジェクトの”リソース”から”シークレット”を選択 レジストリを選択し、”レジストリ追加”を押す 「このプロジェクトのすべての名前空間で使用可能」と「カスタム」を選択し、以下の内容でレジストリに追加    名前 URL ユーザー名 　パスワード     m-oota xxx.xxx.xxx.xxx m-oota 　Password123   s-kunimatsu xxx.xxx.xxx.xxx s-kunimatsu Password123   j-noh xxx.xxx.xxx.xxx j-noh Password123   ngc nvcr.io $oauthtoken ajB0djRjaDkxdHE4aDA0NHY3bWZhZmlqOWU6MDcyYjkyZmMtNzlkNC00ZGE2LTk5YTUtYjBkNWViNzhkOGJi       4. Portainer  実施内容\n4-1. 初期設定\n4-2. ユーザ登録\n4-3. Harborのクレデンシャル登録  4-1. 初期設定\n Portainerにアクセスし、PWを設定 IDを\u0026quot;admin\u0026rdquo;、PWを”password”で管理者としてログイン ”local”を選択 ”Settings”から”Hidden containers”を設定    Name Value     com.docker.compose.show false   io.kubernetes.pod.namespace kube-system   io.rancher.rke.container.name kubelet   io.rancher.rke.container.name kube-proxy   io.kubernetes.pod.namespace monitoring   io.rancher.rke.container.name share-mnt   io.rancher.rke.container.name nginx-proxy   io.rancher.rke.container.name service-sidekick   annotation.kubernetes.io/config.source api   io.kubernetes.container.name tensorboard   io.cattle.agent true      4-2. ユーザ登録\n Usersを選択 以下の内容として設定し、”Administrator”の権限を付与    Username 　パスワード     m-oota Password123   s-kunimatsu Password123   j-noh Password123      4-3. Harborのクレデンシャル登録\n \u0026ldquo;Registries\u0026quot;を選択 ”Add registries”を選択 ”Authentication”を有効にした上で以下を設定    　Name Registry URL ユーザー名 　パスワード     m-oota xxx.xxx.xxx.xxx m-oota Password123   s-kunimatsu xxx.xxx.xxx.xxx s-kunimatsu Password123   j-noh xxx.xxx.xxx.xxx j-noh Password123       5. Grafana  実施内容\n5-1. 可視化ツールのデプロイ 5-2. 初期設定 5-3. ユーザ登録  5-1. 可視化ツールのデプロイ\n\u0026ldquo;monitor/manifest.yaml\u0026quot;にあるファイルをデプロイ\n$ kubectl apply -f manifest.yaml 5-2. 初期設定\n  Grafana（http://xxx.xxx.xxx.xxx:30300）にアクセスし、IDを\u0026quot;admin\u0026rdquo;、PWを\u0026quot;admin\u0026quot;でログイン\n  パスワードの変更を求められるので\u0026quot;password\u0026quot;で設定\n  データソースの追加\n 以下の内容で設定し、\u0026ldquo;Save\u0026amp;Test\u0026quot;を実行 Time series databases：Prometheus Name: gpu_cluster URL: 管理サーバのURL:9090 Skip TLS Verify: チェックを入れる    GPUのメトリックスをみるためにグラフを追加\n左タブの”＋”から”import”を選択し、予めコピーしていたテンプレートを貼り付ける\n  5-3. ユーザ登録\n  \u0026ldquo;Server Admin\u0026quot;から”Users”を選択\n  ”New Users\u0026quot;を押して、以下のようにユーザを登録\n   Name Username 　Password 　Email     Moritaka Oota m-oota Password123 m.oota.nm@hitachi-kenki.com   Satomi Kunimatsu s-kunimatsu Password123 s.kunimatsu.ja@hitachi-kenki.com   Roh Joonyoung j-noh Password123 j.roh.qy@hitachi-kenki.com      ”Configuration”から”Users”を選択   追加したユーザのRoleが”Viewer”になっていることを確認　   6. その他 \u0008Dockerイメージの定期削除\n  ~/image/clean.shに実行権限を付与\n$ chmod +x ~/image/clean.sh   /etc/cron.d/cleanを644のパーミッションで作成\nSHELL=/bin/sh PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin # m h dom mon dow user command 00 3 1 * * root /bin/bash /home/\u0026lt;User\u0026gt;/image/clean.sh \u0026gt;\u0026gt; /home/\u0026lt;User\u0026gt;/image/result.log   cronの再起動\nsudo service cron restart   "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/",
+	"title": "AI開発環境",
+	"tags": [],
+	"description": "",
+	"content": "AI開発統合環境ユーザガイド ユーザガイドの目的 このユーザガイドでは本開発環境を利用したAI開発をスムーズに行う為に各機能や手順を説明する事を目的としています。\n基本編 開発者向けガイド 管理者向けガイド 構築者向けガイド "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/developer/children-5/",
+	"title": "ワークステーション向け初期設定",
+	"tags": [],
+	"description": "",
+	"content": "dockerへの初期設定   TLS通信をしないアドレスを追加\n “/etc/docker/daemon.json”を編集  { \u0026quot;insecure-registries\u0026quot;: [\u0026quot;10.xxx.xxx.xxx\u0026quot;] }  ・ファイルが存在しない場合は作成ください。\n 2. dockerの再起動\n$ sudo service docker restart   Dockerログインコマンド\n使用するワークステーションで以下のコマンドを実行\n$ sudo docker login 10.xxx.xxx.xxx    Dockerイメージの名前付け Harborにイメージを保存するに当たって以下の規則にしたがってイメージに名前をつけます。\nイメージの名前規則：\u0026lt;IP\u0026gt;/\u0026lt;Harborのプロジェクト\u0026gt;/\u0026lt;管理する名前\u0026gt;:\u0026lt;タグ名\u0026gt;\n例：10.xxx.xxx.xxx/kato/test:1.0\n イメージの名前をつける方法   docker tagコマンドを使用して、イメージ名を変更\ndocker tag \u0026lt;コンテナ名/ID\u0026gt; \u0026lt;イメージ名\u0026gt;:\u0026lt;タグ名\u0026gt;   実行中のコンテナをdocker commitコマンドで保存\ndocker commit \u0026lt;コンテナ名/ID\u0026gt; \u0026lt;イメージ名\u0026gt;:\u0026lt;タグ名\u0026gt;   Dockerfileのビルド時に名前をつけてイメージを生成\ndocker build -t \u0026lt;イメージ名\u0026gt;:\u0026lt;タグ名\u0026gt; .     ・権限のないプロジェクトへの保存はできません。\n・Publicではないプロエジェクトにイメージを保存する場合は予めプロジェクトを作成しておく必要があります。\n・イメージ名の変更方法に関してはワークステーション向け初期設定を確認ください。\n "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/macnica/",
+	"title": "Macnica",
+	"tags": [],
+	"description": "",
+	"content": "Chapter 4 構築ガイド  Ansibleによる環境構築   NFSサーバーの立ち上げ   Kubernetes導入   初期設定   "
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "http://10.13.20.42:10080/root/guide/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

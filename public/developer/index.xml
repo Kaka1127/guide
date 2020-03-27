@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>開発者 on My New Hugo Site</title>
+    <link>http://10.13.20.42:10080/root/guide/developer/</link>
+    <description>Recent content in 開発者 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://10.13.20.42:10080/root/guide/developer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rancherの使い方</title>
+      <link>http://10.13.20.42:10080/root/guide/developer/children-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/developer/children-1/</guid>
+      <description>Rancherの用途  カタログを使った開発環境の立ち上げ/立ち下げ 立ち上げた環境へのアクセス  リンク
+ Rancher: http://10.xxx.xxx.xxx:9080   ログイン画面  ログイン方法 ログイン画面からユーザー名・パスワードを入力します。
+ユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。
+  ログイン直後のトップ画面    番号 説明     ① 管理しているクラスターの一覧です。複数のクラスターがあれば複数表示されます。    クラスターとは
+複数台のPCやサーバーをネットワークで接続し、ひとつのコンピュータに見立てて利用できるようにしたシステムです。
+カタログから環境立ち上げを依頼するとクラスター下にあるPCやサーバーの使用状況を見て、環境立ち上げを自動的に行ってくれます。
+  カタログを使った開発環境の起動  プロジェクトへの移動 Harborの認証情報登録 カタログを使ったアプリの起動 立ち上げた環境へのアクセス  アプリ起動する際に既存の設定をコピーするクローン機能がありますが、クローンを使うとアプリ画面から削除してもコンテナが消えない現象が発生します。
+もし、クローンでアプリを作成した場合はアプリ画面から削除の上、ワークロードから直接削除する必要があります。
+  1. プロジェクトへの移動 左上の”グローバル”からアクセス可能なクラスターにある”プロジェクト”を選択します。
+プロジェクトとは
+チームや開発プロジェクト単位でメンバーを管理するための仕組みとして利用できます。
+特に会社全体でクラスターを利用するような場合においてはチーム間の秘匿性を保つための仕組みとしても利用できます。
+   プロジェクトトップ画面の説明    プロジェクトトップ画面    番号 説明     ① 稼働しているアプリケーション一覧が表示されます。   ② プロジェクトのトップベージが開かれます。稼働中の状態を確認するワークロードやHarborの認証情報（シークレット）登録を行う際に利用します。   ③ 開発するためのアプリケーションを起動するための画面に移動します。   ④ このプロジェクトにアクセスできるメンバーが表示されます。   ⑤ ワークロードおよびサービスディスカバリーのみこのシステムでは利用します。         2.</description>
+    </item>
+    
+    <item>
+      <title>Harobrの使い方</title>
+      <link>http://10.13.20.42:10080/root/guide/developer/children-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/developer/children-2/</guid>
+      <description>Harborの用途  Dockerイメージの管理 Rancherで環境を立ち上げる時にイメージを取得する先として利用する チームまたは自分専用のレジストリが持てる  リンク
+ Harbor: http://10.xxx.xxx.xxx   ログイン画面  トップ画面    番号 説明     ① 権限のあるプロジェクトの一覧を確認できます。”library”は社内共通イメージが存在します。   ② ユーザー名が表示されます。ここを押すとパスワード変更、ログアウトすることができます。   ③ Harbor上で行ったイベント（削除、プロジェクト追加など）が表示されます。   ④ ログインしたユーザの権限で確認できるレポジトリ情報が表示されます。   ⑤ ログインしたユーザの権限で確認できるイベントのログ情報が確認できます。   ⑥ 新しくプロジェクトを作成、削除するためのボタンです。     ログイン方法 ログイン画面からユーザー名・パスワードを入力します。
+ユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。
+  チーム/自分専用のレジストリ作成   専用レジストリの作成
+ トップ画面の”New PROJECT”ボタンを押す ”ProjectName”をつける Access Levelを“Public”にするとログインできるユーザ全てに公開されます。
+  トップ画面で確認     チームで共有のプロジェクトでユーザ追加する場合</description>
+    </item>
+    
+    <item>
+      <title>Portainerの使い方</title>
+      <link>http://10.13.20.42:10080/root/guide/developer/children-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/developer/children-3/</guid>
+      <description>Portainerの用途  Harborに保存するためのイメージ名変更 Harborへのイメージ保存  リンク
+ Portainer: http://10.xxx.xxx.xxx:9000   ログイン画面  トップ画面    番号 説明     ① メニュー画面です。   ② コンテナを管理している対象が一覧で表示されます。”local”は実行されている環境を意味します。   ③ ユーザー名が表示されます。パスワード変更、ログアウトすることができます。     ダッシュボード 管理する対象を選択すると稼働状況が確認できますが、使用するのは“Containers”と“Images”のみです。
+ ログイン方法 ログイン画面からユーザー名・パスワードを入力します。
+ユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。
+  初期設定 Harborに保存するためにHarborへのアクセス権限を登録します
+ 左側のメニューから“Registries”を選択 “Add registry”を押す  &amp;ldquo;Custom Registry&amp;quot;を選択の上、必要事項を記入  Name: ログインIDと同じ名前 Registry URL：HarborのIPアドレス Userneme：HarborにログインするID Password：ログインIDのパスワード    保存   立ち上げたコンテナの保存 Rancherのカタログで立ち上げた環境で開発が完了したコンテナを保存します。
+  ダッシュボードトップまたは左メニューの“Containers”を選択</description>
+    </item>
+    
+    <item>
+      <title>Grafanaの使い方</title>
+      <link>http://10.13.20.42:10080/root/guide/developer/children-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/developer/children-4/</guid>
+      <description>Grafanaの用途  GPUの稼働状況確認  リンク
+ Grafana: http://10.xxx.xxx.xxx:30300   ログイン画面  トップ画面  ログイン方法 ログイン画面からユーザー名・パスワードを入力します。
+ユーザー名・パスワードはシステム管理者から提供されますので、不明な場合はシステム管理者に確認してください。
+  GPUの稼働状況確認   左上にある”Home”より”General”にある”GPU”を選択   GPUの情報が集約されたダッシュボードが表示   </description>
+    </item>
+    
+    <item>
+      <title>ワークステーション向け初期設定</title>
+      <link>http://10.13.20.42:10080/root/guide/developer/children-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/developer/children-5/</guid>
+      <description>dockerへの初期設定   TLS通信をしないアドレスを追加
+ “/etc/docker/daemon.json”を編集  { &amp;quot;insecure-registries&amp;quot;: [&amp;quot;10.xxx.xxx.xxx&amp;quot;] }  ・ファイルが存在しない場合は作成ください。
+ 2. dockerの再起動
+$ sudo service docker restart   Dockerログインコマンド
+使用するワークステーションで以下のコマンドを実行
+$ sudo docker login 10.xxx.xxx.xxx    Dockerイメージの名前付け Harborにイメージを保存するに当たって以下の規則にしたがってイメージに名前をつけます。
+イメージの名前規則：&amp;lt;IP&amp;gt;/&amp;lt;Harborのプロジェクト&amp;gt;/&amp;lt;管理する名前&amp;gt;:&amp;lt;タグ名&amp;gt;
+例：10.xxx.xxx.xxx/kato/test:1.0
+ イメージの名前をつける方法   docker tagコマンドを使用して、イメージ名を変更
+docker tag &amp;lt;コンテナ名/ID&amp;gt; &amp;lt;イメージ名&amp;gt;:&amp;lt;タグ名&amp;gt;   実行中のコンテナをdocker commitコマンドで保存
+docker commit &amp;lt;コンテナ名/ID&amp;gt; &amp;lt;イメージ名&amp;gt;:&amp;lt;タグ名&amp;gt;   Dockerfileのビルド時に名前をつけてイメージを生成
+docker build -t &amp;lt;イメージ名&amp;gt;:&amp;lt;タグ名&amp;gt; .     ・権限のないプロジェクトへの保存はできません。
+・Publicではないプロエジェクトにイメージを保存する場合は予めプロジェクトを作成しておく必要があります。
+・イメージ名の変更方法に関してはワークステーション向け初期設定を確認ください。</description>
+    </item>
+    
+  </channel>
+</rss>

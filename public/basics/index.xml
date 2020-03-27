@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>基本 on My New Hugo Site</title>
+    <link>http://10.13.20.42:10080/root/guide/basics/</link>
+    <description>Recent content in 基本 on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://10.13.20.42:10080/root/guide/basics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>はじめに</title>
+      <link>http://10.13.20.42:10080/root/guide/basics/children-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/basics/children-1/</guid>
+      <description>システムで使われている技術 マクニカAI開発環境は、各開発者がブラウザ経由でAIを開発するためのアプリケーション環境を簡単に立ち上げることができます。
+このシステムでは「コンテナ」と呼ばれる技術仮想化技術をベースとしております。
+コンテナは以下のような理由により機械学習の開発において親和性が高く、昨今注目を浴びている技術です。
+ 面倒な環境構築が最低限になり、バージョン依存関係エラーが起きない 環境が揃ったDockerイメージが豊富  NVIDIAからもGPUに最適化されたイメージが提供されている（NGC）   開発した環境をチーム内で共有可能 環境を破壊することなく破棄、再起動ができることから、スクラップ＆ビルドが簡単  このシステムはコンテナを扱うための詳細な知識がなくても、カタログと呼ばれるテンプレートに必要事項を記入するだけで簡単にコンテナ（アプリケーション）を起動することができますが、開発者がDockerの初歩の知識を持っていることが望ましいです。
+Dockerが初めての方はリンク先を参照してください。
+ Dockerとはなにか コンテナとはなにか Docker公式チュートリアル  </description>
+    </item>
+    
+    <item>
+      <title>用語</title>
+      <link>http://10.13.20.42:10080/root/guide/basics/children-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/basics/children-2/</guid>
+      <description>本システムで使われる言語    用語 説明     Docker コンテナ仮想化技術の１つで、2020年現在ではコンテナ仮想化技術の業界標準になっています。   Dockerイメージ イメージはコンテナの基になるデータで、イメージにはOSやライブラリなどを含むファイル群が含まれています。   Docker Hub ユーザーが作成したコンテナをアップロードして公開・共有できるサービスで、ここで公開されているコンテナは自由にダウンロードして自分のサーバーに簡単にデプロイできます。   レジストリ コンテナイメージを管理、保存するための場所です。一般にはDocker Hub、NGC（NVIDIA GPU Could）など公開されているレジストリがあります。このシステムでは社内専用イメージが格納されたプライベートレジストリ「Harbor」が使えます。   Rancher コンテナ管理のプラットフォームを提供するアプリケーションです。Rancherのカタログ機能を使用してHarborやNGCにあるイメージを使った開発環境（コンテナ）の立ち上げを行います。   カタログ コンテナを起動するためのテンプレートのようなです。穴埋め式で必要事項を記入するとコンテナが起動できます。   Harbor Docker Hubのような、コンテナイメージを保存し公開する機能を実装したソフトウェアです。   Portainer Dockerの操作をGUIで行うことができます。   Grafana 情報収集、関しツールと組み合せで使用する可視化することができるツールです。   Kubernetes クラスタのリソース管理、配分、スケジューリング等の基本的な機能を提供するコンテナオーケストレーションを行います。   Gitlab ソフトウェア開発支援環境で、「GitHub」のようなサービスを社内などのクローズド環境に独自で構築できるGitリポジトリマネージャーです。    </description>
+    </item>
+    
+    <item>
+      <title>システム概要</title>
+      <link>http://10.13.20.42:10080/root/guide/basics/children-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/basics/children-3/</guid>
+      <description>AI開発において、本システムがカバーする範囲 データ前処理から性能テストまで、それぞれの開発環境が立ち上げ可能
+環境構成 本システムで構成されている要素は下記の通りです。
+   構成要素 説明     管理サーバ システム全体に関連した情報を取り扱うためのサーバー。   計算ノード 指示されたジョブを実行するサーバー。   開発者 ブラウザ経由で管理サーバに環境立ち上げ指示を行います。   共有ストレージ 学習に使用するデータを置くストレージ。学習結果もここに出力させる必要があります。    開発環境を立ち上げるまでの流れ   Rancherにログイン
+  カタログに必要事項を記入
+  立ち上がった環境にアクセスして開発
+  </description>
+    </item>
+    
+    <item>
+      <title>ワークフロー</title>
+      <link>http://10.13.20.42:10080/root/guide/basics/children-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://10.13.20.42:10080/root/guide/basics/children-4/</guid>
+      <description>開発者ワークフロー システムを使うにあたり、Windowsのパソコンを使う場合とUbuntuのワークステーション向けに２つのワークフローがあります。
+  Windowsパソコンで開発を行う場合
+ ブラウザでRancherにアクセス カタログから環境の立ち上げ ブラウザでモデル開発環境にアクセス 開発した環境の保存（必要あれば）    ワークステーションを使用した開発を行う場合
+ 社内レジストリからイメージを入手 入手したイメージでモデルを開発 開発したコンテナを社内レジストリに保存 ブラウザでRancherにアクセス 作成したイメージを使用した計算ジョブをカタログから投入    具体的な使い方は詳細は管理者向けページで説明します。</description>
+    </item>
+    
+  </channel>
+</rss>
