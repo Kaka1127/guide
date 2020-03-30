@@ -11,20 +11,20 @@
     <title>開発者 :: My New Hugo Site</title>
 
     
-    <link href="https://Kaka1127.github.io/guide/css/nucleus.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/fontawesome-all.min.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/hybrid.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/featherlight.min.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/perfect-scrollbar.min.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/auto-complete.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/atom-one-dark-reasonable.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/theme.css?1585287346" rel="stylesheet">
-    <link href="https://Kaka1127.github.io/guide/css/hugo-theme.css?1585287346" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/nucleus.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/fontawesome-all.min.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/hybrid.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/featherlight.min.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/perfect-scrollbar.min.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/auto-complete.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/atom-one-dark-reasonable.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/theme.css?1585534468" rel="stylesheet">
+    <link href="https://Kaka1127.github.io/guide/css/hugo-theme.css?1585534468" rel="stylesheet">
     
-      <link href="https://Kaka1127.github.io/guide/css/theme-blue.css?1585287346" rel="stylesheet">
+      <link href="https://Kaka1127.github.io/guide/css/theme-blue.css?1585534468" rel="stylesheet">
     
 
-    <script src="https://Kaka1127.github.io/guide/js/jquery-3.3.1.min.js?1585287346"></script>
+    <script src="https://Kaka1127.github.io/guide/js/jquery-3.3.1.min.js?1585534468"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -61,14 +61,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="https://Kaka1127.github.io/guide/js/lunr.min.js?1585287346"></script>
-<script type="text/javascript" src="https://Kaka1127.github.io/guide/js/auto-complete.js?1585287346"></script>
+<script type="text/javascript" src="https://Kaka1127.github.io/guide/js/lunr.min.js?1585534468"></script>
+<script type="text/javascript" src="https://Kaka1127.github.io/guide/js/auto-complete.js?1585534468"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/Kaka1127.github.io\/guide";
     
 </script>
-<script type="text/javascript" src="https://Kaka1127.github.io/guide/js/search.js?1585287346"></script>
+<script type="text/javascript" src="https://Kaka1127.github.io/guide/js/search.js?1585534468"></script>
 
     
   </div>
@@ -466,19 +466,16 @@
 
 <div class="mermaid" align="center">
 graph TD;
-    A(Start) --> B[Rancherの使い方]
-    B --> C[Harborの使い方]
-    C --> D{GPUの利用状況を確認}
-    D --> |はい| E[Grafanaの使い方]
-    D --> |いいえ| F{ワークステーションの利用}
-    E --> F
-    F --> |はい| G[ワークステーション向け初期設定]
-    F --> |いいえ| K{開発した環境を保存するか}
-    G --> Z
-    K --> |はい| H[Portainerの使い方]
-    K --> |いいえ| Z[終了]
-    H --> Z
-    E --> Z
+    A(開発スタート) --> B{パソコンのOS}
+    B --> |Windows| C[1.Rancherの使い方]
+    B --> |Ubuntu| D[1.ワークステーション向け初期設定]
+    C --> E[2.Harborの使い方]
+    D --> F[2.Harborの使い方]
+    F --> G[3.Rancherの使い方]
+    E --> H[3.Portainerの使い方]
+    H --> J[4.Grafanaの使い方]
+    G --> L[4.Grafanaの使い方]
+    J --> K[5.チュートリアル]
 </div>
 
 
@@ -859,19 +856,19 @@ graph TD;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://Kaka1127.github.io/guide/js/clipboard.min.js?1585287346"></script>
-    <script src="https://Kaka1127.github.io/guide/js/perfect-scrollbar.min.js?1585287346"></script>
-    <script src="https://Kaka1127.github.io/guide/js/perfect-scrollbar.jquery.min.js?1585287346"></script>
-    <script src="https://Kaka1127.github.io/guide/js/jquery.sticky.js?1585287346"></script>
-    <script src="https://Kaka1127.github.io/guide/js/featherlight.min.js?1585287346"></script>
-    <script src="https://Kaka1127.github.io/guide/js/highlight.pack.js?1585287346"></script>
+    <script src="https://Kaka1127.github.io/guide/js/clipboard.min.js?1585534468"></script>
+    <script src="https://Kaka1127.github.io/guide/js/perfect-scrollbar.min.js?1585534468"></script>
+    <script src="https://Kaka1127.github.io/guide/js/perfect-scrollbar.jquery.min.js?1585534468"></script>
+    <script src="https://Kaka1127.github.io/guide/js/jquery.sticky.js?1585534468"></script>
+    <script src="https://Kaka1127.github.io/guide/js/featherlight.min.js?1585534468"></script>
+    <script src="https://Kaka1127.github.io/guide/js/highlight.pack.js?1585534468"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://Kaka1127.github.io/guide/js/modernizr.custom-3.6.0.js?1585287346"></script>
-    <script src="https://Kaka1127.github.io/guide/js/learn.js?1585287346"></script>
-    <script src="https://Kaka1127.github.io/guide/js/hugo-learn.js?1585287346"></script>
+    <script src="https://Kaka1127.github.io/guide/js/modernizr.custom-3.6.0.js?1585534468"></script>
+    <script src="https://Kaka1127.github.io/guide/js/learn.js?1585534468"></script>
+    <script src="https://Kaka1127.github.io/guide/js/hugo-learn.js?1585534468"></script>
 
-    <link href="https://Kaka1127.github.io/guide/mermaid/mermaid.css?1585287346" rel="stylesheet" />
-    <script src="https://Kaka1127.github.io/guide/mermaid/mermaid.js?1585287346"></script>
+    <link href="https://Kaka1127.github.io/guide/mermaid/mermaid.css?1585534468" rel="stylesheet" />
+    <script src="https://Kaka1127.github.io/guide/mermaid/mermaid.js?1585534468"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -14,19 +14,16 @@ pre = "<b>2. </b>"
 
 {{<mermaid align="center">}}
 graph TD;
-    A(Start) --> B[Rancherの使い方]
-    B --> C[Harborの使い方]
-    C --> D{GPUの利用状況を確認}
-    D --> |はい| E[Grafanaの使い方]
-    D --> |いいえ| F{ワークステーションの利用}
-    E --> F
-    F --> |はい| G[ワークステーション向け初期設定]
-    F --> |いいえ| K{開発した環境を保存するか}
-    G --> Z
-    K --> |はい| H[Portainerの使い方]
-    K --> |いいえ| Z[終了]
-    H --> Z
-    E --> Z
+    A(開発スタート) --> B{パソコンのOS}
+    B --> |Windows| C[1.Rancherの使い方]
+    B --> |Ubuntu| D[1.ワークステーション向け初期設定]
+    C --> E[2.Harborの使い方]
+    D --> F[2.Harborの使い方]
+    F --> G[3.Rancherの使い方]
+    E --> H[3.Portainerの使い方]
+    H --> J[4.Grafanaの使い方]
+    G --> L[4.Grafanaの使い方]
+    J --> K[5.チュートリアル]
 {{< /mermaid >}}
 
 {{% children %}}
